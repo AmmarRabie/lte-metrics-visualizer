@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.digis2.ltevisualizer.R;
 import com.digis2.ltevisualizer.common.IMetricsObserver;
 import com.digis2.ltevisualizer.common.model.LTEMetricsModel;
+import com.digis2.ltevisualizer.components.MetricsTable;
 
 import androidx.fragment.app.Fragment;
 
@@ -18,7 +19,7 @@ import androidx.fragment.app.Fragment;
 public class TableFragment extends Fragment implements IMetricsObserver {
     private static final String TAG = "TableFragment";
 
-    private ViewGroup rootView;
+    private MetricsTable talbeView;
 
     public TableFragment() {
         // Required empty public constructor
@@ -44,15 +45,13 @@ public class TableFragment extends Fragment implements IMetricsObserver {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View parent = inflater.inflate(R.layout.fragment_table, container, false);
-        rootView = (ViewGroup) parent.findViewById(R.id.frg_table_container);
+        talbeView = (MetricsTable) parent.findViewById(R.id.metrics_table);
         return parent;
     }
 
     @Override
     public void onNewItem(LTEMetricsModel item) {
-        TextView newView = new TextView(getContext());
-        newView.setText(String.valueOf(item.getRSRP()));
-        rootView.addView(newView);
+        talbeView.addValue(item);
     }
 
     @Override

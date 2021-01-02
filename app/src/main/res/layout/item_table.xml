@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="3">
+
+    <com.digis2.ltevisualizer.components.MetricTextView
+        android:id="@+id/tr_txt_val1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        tools:text="sample text" />
+
+    <com.digis2.ltevisualizer.components.MetricTextView
+        android:id="@+id/tr_txt_val2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        tools:text="sample text" />
+
+    <com.digis2.ltevisualizer.components.MetricTextView
+        android:id="@+id/tr_txt_val3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        tools:text="sample text" />
+
+</LinearLayout>
