@@ -7,9 +7,10 @@
     android:orientation="vertical"
     tools:context=".visualizer.ChartFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="chart fragment" />
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/metrics_chart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
 
 </LinearLayout>
