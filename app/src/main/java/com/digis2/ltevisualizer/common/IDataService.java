@@ -2,6 +2,8 @@ package com.digis2.ltevisualizer.common;
 
 import com.digis2.ltevisualizer.common.model.LTEMetricsModel;
 
+import java.util.Timer;
+
 import androidx.annotation.NonNull;
 
 /**
@@ -24,7 +26,7 @@ public interface IDataService {
      * @param callback Async pattern for providing the data
      * @see #getRandomMetrics(Get)
      */
-    void poolRandomMetrics(long periodMillis, final Get<LTEMetricsModel> callback);
+    Timer poolRandomMetrics(long periodMillis, final Get<LTEMetricsModel> callback);
 
 
     /**
