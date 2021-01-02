@@ -1,36 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/tableBackgroundColor"
     android:weightSum="3">
 
-    <com.digis2.ltevisualizer.components.MetricTextView
-        android:id="@+id/tr_txt_val1"
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textColor="@color/white"
-        tools:text="-76.5" />
+        android:layout_weight="1">
 
-    <com.digis2.ltevisualizer.components.MetricTextView
-        android:id="@+id/tr_txt_val2"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tr_txt_val1"
+            android:layout_alignTop="@+id/tr_txt_val1"
+            android:background="@color/progressColorBg" />
+
+        <com.digis2.ltevisualizer.components.MetricTextView
+            android:id="@+id/tr_txt_val1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="sample text"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textColor="@color/white"
-        tools:text="-11.0" />
+        android:layout_marginStart="4dp"
+        android:layout_weight="1">
 
-    <com.digis2.ltevisualizer.components.MetricTextView
-        android:id="@+id/tr_txt_val3"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tr_txt_val2"
+            android:layout_alignTop="@+id/tr_txt_val2"
+            android:background="@color/progressColorBg" />
+
+        <com.digis2.ltevisualizer.components.MetricTextView
+
+            android:id="@+id/tr_txt_val2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="sample text"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textColor="@color/white"
-        tools:text="12.8" />
+        android:layout_marginStart="4dp"
+        android:layout_weight="1">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignBottom="@+id/tr_txt_val3"
+            android:layout_alignTop="@+id/tr_txt_val3"
+            android:background="@color/progressColorBg" />
+
+        <com.digis2.ltevisualizer.components.MetricTextView
+            android:id="@+id/tr_txt_val3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="sample text"
+            android:textColor="@color/white" />
+    </RelativeLayout>
 </LinearLayout>
