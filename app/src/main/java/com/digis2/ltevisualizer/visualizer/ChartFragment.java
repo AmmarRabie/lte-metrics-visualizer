@@ -12,16 +12,23 @@ import com.digis2.ltevisualizer.R;
 import com.digis2.ltevisualizer.common.IMetricsObserver;
 import com.digis2.ltevisualizer.common.model.LTEMetricsModel;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import androidx.fragment.app.Fragment;
 
@@ -83,6 +90,9 @@ public class ChartFragment extends Fragment implements IMetricsObserver, OnChart
         LineData data = new LineData();
         data.setValueTextColor(Color.WHITE);
 
+        // init empty 3 sets for metrics
+        for (int i = 0; i < names.length; i++) data.addDataSet(createSet(names[i], colors[i]));
+
         // add empty data
         chart.setData(data);
 
@@ -100,13 +110,22 @@ public class ChartFragment extends Fragment implements IMetricsObserver, OnChart
         xl.setDrawGridLines(false);
         xl.setAvoidFirstLastClipping(true);
         xl.setEnabled(true);
+        xl.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                // ignores the values and returns current time
+                Date d = Calendar.getInstance().getTime();
+                return new SimpleDateFormat("mm:ss", Locale.getDefault()).format(d);
+            }
+        });
+        xl.setLabelCount(3);
 
         YAxis leftAxis = chart.getAxisLeft();
         leftAxis.setTypeface(tfLight);
         leftAxis.setTextColor(Color.WHITE);
 //        leftAxis.s etAxisMaximum(100f);
 //        leftAxis.setAxisMinimum(0f);
-        leftAxis.setDrawGridLines(false);
+        leftAxis.setDrawGridLines(true);
 
         YAxis rightAxis = chart.getAxisRight();
         rightAxis.setEnabled(false);
@@ -118,19 +137,10 @@ public class ChartFragment extends Fragment implements IMetricsObserver, OnChart
 
         final int[] values = {item.getSINR(), item.getRSRP(), item.getRSRQ()};
         if (data != null) {
-
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < data.getDataSetCount(); i++) {
                 ILineDataSet set = data.getDataSetByIndex(i);
-                // set.addEntry(...); // can be called as well
-
-                if (set == null) {
-                    set = createSet(names[i], colors[i]);
-                    data.addDataSet(set);
-                }
                 set.addEntry(new Entry(set.getEntryCount(), (float) values[i]));
-//                data.addEntry(new Entry(set.getEntryCount(), (float) item.getRSRP()), 0);
             }
-
             data.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -150,7 +160,6 @@ public class ChartFragment extends Fragment implements IMetricsObserver, OnChart
     }
 
     private LineDataSet createSet(String name, int color) {
-
         LineDataSet set = new LineDataSet(null, name);
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(color);
