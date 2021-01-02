@@ -30,7 +30,6 @@ public class MetricTextView extends androidx.appcompat.widget.AppCompatTextView 
 
 
     private void init() {
-        // TODO: set the background shape for progress and color rendering
         setBackground(ContextCompat.getDrawable(this.getContext(), R.drawable.bg_filler));
     }
 

@@ -2,7 +2,6 @@ package com.digis2.ltevisualizer.components;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import com.digis2.ltevisualizer.R;
 import com.digis2.ltevisualizer.common.model.LTEMetricsModel;
@@ -20,22 +19,17 @@ public class MetricsTable extends LinearLayoutCompat {
 
     public MetricsTable(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        Log.i(TAG, "MetricsTable: constructed");
         init();
     }
-
 
     private void init() {
         setOrientation(VERTICAL);
 
-        Log.i(TAG, "init: init of table");
+        // add the header from the resource file
         inflate(getContext(), R.layout.header_metrics_table, this);
     }
 
     public void addValue(@NonNull LTEMetricsModel metrics) {
-//        int metricRSRP = metrics.getRSRP(),
-//                metricRSRQ = metrics.getRSRQ(),
-//                metricSINR = metrics.getSINR();
         MetricsTableRow row = new MetricsTableRow(getContext());
         row.setMetrics(metrics);
         addView(row);

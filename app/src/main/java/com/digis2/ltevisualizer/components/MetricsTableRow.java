@@ -20,17 +20,11 @@ public class MetricsTableRow extends LinearLayoutCompat {
     private final MetricTextView[] valuesViews = new MetricTextView[3];
 
     public MetricsTableRow(@NonNull Context context) {
-        super(context);
-        init();
+        this(context, null);
     }
 
     public MetricsTableRow(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
-    }
-
-    public MetricsTableRow(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
         init();
     }
 
@@ -40,9 +34,7 @@ public class MetricsTableRow extends LinearLayoutCompat {
         LayoutInflater.from(getContext()).inflate(R.layout.item_table, this);
 
         int[] ids = {R.id.tr_txt_val1, R.id.tr_txt_val2, R.id.tr_txt_val3};
-        for (int i = 0; i < ids.length; i++) {
-            valuesViews[i] = findViewById(ids[i]);
-        }
+        for (int i = 0; i < ids.length; i++) valuesViews[i] = findViewById(ids[i]);
     }
 
     public void setMetrics(LTEMetricsModel metrics) {
