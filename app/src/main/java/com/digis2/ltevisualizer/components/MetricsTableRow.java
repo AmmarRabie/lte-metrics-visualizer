@@ -3,10 +3,10 @@ package com.digis2.ltevisualizer.components;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 
 import com.digis2.ltevisualizer.R;
 import com.digis2.ltevisualizer.common.model.LTEMetricsModel;
+import com.digis2.ltevisualizer.common.utils.Legend;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +17,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
  */
 public class MetricsTableRow extends LinearLayoutCompat {
 
-    private MetricTextView value1View;
-    private MetricTextView value2View;
-    private MetricTextView value3View;
+    private final MetricTextView[] valuesViews = new MetricTextView[3];
 
     public MetricsTableRow(@NonNull Context context) {
         super(context);
@@ -36,27 +34,27 @@ public class MetricsTableRow extends LinearLayoutCompat {
         init();
     }
 
-    private void init(){
+    private void init() {
         setOrientation(VERTICAL);
 
         LayoutInflater.from(getContext()).inflate(R.layout.item_table, this);
 
-        value1View = findViewById(R.id.tr_txt_val1);
-        value2View = findViewById(R.id.tr_txt_val2);
-        value3View = findViewById(R.id.tr_txt_val3);
-
-        value1View.setProgressColor("#006699");
-        value2View.setProgressColor("#990000");
-        value3View.setProgressColor("#009900");
-
-        value1View.setProgressPercentage(100);
-        value2View.setProgressPercentage(70);
-        value3View.setProgressPercentage(30);
+        int[] ids = {R.id.tr_txt_val1, R.id.tr_txt_val2, R.id.tr_txt_val3};
+        for (int i = 0; i < ids.length; i++) {
+            valuesViews[i] = findViewById(ids[i]);
+        }
     }
 
-    public void setMetrics(LTEMetricsModel metrics){
-        value1View.setText(String.valueOf(metrics.getSINR()));
-        value2View.setText(String.valueOf(metrics.getRSRP()));
-        value3View.setText(String.valueOf(metrics.getRSRQ()));
+    public void setMetrics(LTEMetricsModel metrics) {
+        // display order defined here
+        final String[] names = {"SINR", "RSRP", "RSRQ"};
+        final int[] values = {metrics.getSINR(), metrics.getRSRP(), metrics.getRSRQ()};
+
+        for (int i = 0; i < values.length; i++) {
+            int v = values[i];
+            valuesViews[i].setText(String.valueOf(v));
+            valuesViews[i].setProgressColor(Legend.calcColor(getContext(), names[i], v));
+            valuesViews[i].setProgressPercentage(Legend.calcProgress(getContext(), names[i], v));
+        }
     }
 }
