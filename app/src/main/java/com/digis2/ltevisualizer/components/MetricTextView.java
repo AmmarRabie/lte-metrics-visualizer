@@ -1,9 +1,14 @@
 package com.digis2.ltevisualizer.components;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 
 import com.digis2.ltevisualizer.R;
+
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +40,9 @@ public class MetricTextView extends androidx.appcompat.widget.AppCompatTextView 
      * @param color color to set in string format like "#006699"
      */
     public void setProgressColor(String color) {
-        // TODO
+        ClipDrawable clipDrawable = (ClipDrawable) getBackground();
+        GradientDrawable rectDrawable = (GradientDrawable) clipDrawable.getDrawable();
+        Objects.requireNonNull(rectDrawable).setColor(Color.parseColor(color));
     }
 
     /**

@@ -2,6 +2,7 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/headerBackground"
     android:weightSum="3">
 
     <TextView
@@ -10,7 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="SINR" />
+        android:text="SINR"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tr_header_val2"
@@ -18,7 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="RSRP" />
+        android:text="RSRP"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tr_header_val3"
@@ -26,7 +31,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="RSRQ" />
+        android:text="RSRQ"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
