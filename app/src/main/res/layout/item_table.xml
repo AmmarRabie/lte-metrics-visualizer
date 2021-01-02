@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        tools:text="sample text" />
+        android:textColor="@color/white"
+        tools:text="-76.5" />
 
     <com.digis2.ltevisualizer.components.MetricTextView
         android:id="@+id/tr_txt_val2"
@@ -19,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        tools:text="sample text" />
+        android:textColor="@color/white"
+        tools:text="-11.0" />
 
     <com.digis2.ltevisualizer.components.MetricTextView
         android:id="@+id/tr_txt_val3"
@@ -27,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        tools:text="sample text" />
+        android:textColor="@color/white"
+        tools:text="12.8" />
 
 </LinearLayout>

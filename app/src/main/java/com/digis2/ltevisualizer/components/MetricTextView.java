@@ -3,8 +3,11 @@ package com.digis2.ltevisualizer.components;
 import android.content.Context;
 import android.util.AttributeSet;
 
+import com.digis2.ltevisualizer.R;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 /**
  * Common metric class for LTE metrics that enable progress color filling
@@ -23,7 +26,7 @@ public class MetricTextView extends androidx.appcompat.widget.AppCompatTextView 
 
     private void init() {
         // TODO: set the background shape for progress and color rendering
-//        setBackground(ContextCompat.getDrawable(this.getContext(), R.drawable.bg_filler));
+        setBackground(ContextCompat.getDrawable(this.getContext(), R.drawable.bg_filler));
     }
 
     /**

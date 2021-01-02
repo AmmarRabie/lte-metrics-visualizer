@@ -45,13 +45,13 @@ public class MetricsTableRow extends LinearLayoutCompat {
         value2View = findViewById(R.id.tr_txt_val2);
         value3View = findViewById(R.id.tr_txt_val3);
 
-//        value1View.setProgressColor("#006699");
-//        value2View.setProgressColor("#990000");
-//        value3View.setProgressColor("#009900");
-//
-//        value1View.setProgressPercentage(100);
-//        value2View.setProgressPercentage(70);
-//        value3View.setProgressPercentage(30);
+        value1View.setProgressColor("#006699");
+        value2View.setProgressColor("#990000");
+        value3View.setProgressColor("#009900");
+
+        value1View.setProgressPercentage(100);
+        value2View.setProgressPercentage(70);
+        value3View.setProgressPercentage(30);
     }
 
     public void setMetrics(LTEMetricsModel metrics){
