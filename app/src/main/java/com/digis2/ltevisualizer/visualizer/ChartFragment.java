@@ -71,7 +71,7 @@ public class ChartFragment extends Fragment implements IMetricsObserver, OnChart
         chart.setOnChartValueSelectedListener(this);
 
         // enable description text
-        chart.getDescription().setEnabled(true);
+        chart.getDescription().setEnabled(false);
 
         // enable touch gestures
         chart.setTouchEnabled(true);
@@ -113,9 +113,7 @@ public class ChartFragment extends Fragment implements IMetricsObserver, OnChart
         xl.setValueFormatter(new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
-                // ignores the values and returns current time
-                Date d = Calendar.getInstance().getTime();
-                return new SimpleDateFormat("mm:ss", Locale.getDefault()).format(d);
+                return (String) data.getDataSetByIndex(0).getEntryForIndex((int) value).getData();
             }
         });
         xl.setLabelCount(3);
@@ -139,7 +137,9 @@ public class ChartFragment extends Fragment implements IMetricsObserver, OnChart
         if (data != null) {
             for (int i = 0; i < data.getDataSetCount(); i++) {
                 ILineDataSet set = data.getDataSetByIndex(i);
-                set.addEntry(new Entry(set.getEntryCount(), (float) values[i]));
+                Date d = Calendar.getInstance().getTime();
+                String time = new SimpleDateFormat("mm:ss", Locale.getDefault()).format(d);
+                set.addEntry(new Entry(set.getEntryCount(), (float) values[i], time));
             }
             data.notifyDataChanged();
 
